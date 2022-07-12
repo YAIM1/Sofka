@@ -1,3 +1,6 @@
+//---//---//---//---//---//---//---//---//---//---//
+// Realizar un programa el cual solicite su nombre y apellidos.
+//---//---//---//---//---//---//---//---//---//---//
 Algoritmo Punto1
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables

@@ -1,3 +1,6 @@
+//---//---//---//---//---//---//---//---//---//---//
+// Realizar un programa el cual solicite su nombre, apellidos, edad y estatura.
+//---//---//---//---//---//---//---//---//---//---//
 Algoritmo Punto2
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
