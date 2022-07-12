@@ -14,8 +14,9 @@ Proceso Punto10
 	Definir NuevaCantidad Como Real;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
+	Bandera <- Falso;
+
 	Cantidad <- 0;
-	Badera <- Falso;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Mostrar las opciones disponibles
 	Escribir " -> Acciones <- ";

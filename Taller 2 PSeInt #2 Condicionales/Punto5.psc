@@ -24,16 +24,18 @@ Proceso Punto5
 	Definir Bandera Como Logico;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
+	Bandera <- Falso;
+	
 	IDProducto1 <- 1;
 	NombreProducto1 <- "P1";
 	PrecioProducto1 <- 1.1;
 	
 	IDProducto2 <- 2;
-	NombreProducto1 <- "P2";
-	PrecioProducto1 <- 2.2;
+	NombreProducto2 <- "P2";
+	PrecioProducto2 <- 2.2;
 	
 	IDProducto3 <- 3;
-	NombreProducto2 <- "P3";
+	NombreProducto3 <- "P3";
 	PrecioProducto3 <- 3.3;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Mostrar las opciones disponibles
@@ -52,17 +54,23 @@ Proceso Punto5
 			
 			si no Bandera & ID == IDProducto1 Entonces
 				Bandera <- Verdadero;
-				Escribir "Se compró el producto: ", NombreProducto1;
+				Escribir "Se ha comprado";
+				Escribir "Producto: ", NombreProducto1;
+				Escribir "Precio: ", PrecioProducto1;
 			FinSi
 			
 			si no Bandera & ID == IDProducto2 Entonces
 				Bandera <- Verdadero;
-				Escribir "Se compró el producto: ", NombreProducto2;
+				Escribir "Se ha comprado";
+				Escribir "Producto: ", NombreProducto2;
+				Escribir "Precio: ", PrecioProducto2;
 			FinSi
 			
 			si no Bandera & ID == IDProducto3 Entonces
 				Bandera <- Verdadero;
-				Escribir "Se compró el producto: ", NombreProducto3;
+				Escribir "Se ha comprado";
+				Escribir "Producto: ", NombreProducto3;
+				Escribir "Precio: ", PrecioProducto3;
 			FinSi
 			
 			si no Bandera Entonces
@@ -77,19 +85,25 @@ Proceso Punto5
 			Escribir "ID del producto a devolver";
 			leer ID;
 			
-			si ID == IDProducto1 & no Bandera Entonces
+			si no Bandera & ID == IDProducto1 Entonces
 				Bandera <- Verdadero;
-				Escribir "Se devolvió el producto: ", NombreProducto1;
+				Escribir "Se ha devuelto";
+				Escribir "Producto: ", NombreProducto1;
+				Escribir "Precio: ", PrecioProducto1;
 			FinSi
 			
-			si ID == IDProducto2 & no Bandera Entonces
+			si no Bandera & ID == IDProducto2 Entonces
 				Bandera <- Verdadero;
-				Escribir "Se devolvió el producto: ", NombreProducto2;
+				Escribir "Se ha devuelto";
+				Escribir "Producto: ", NombreProducto2;
+				Escribir "Precio: ", PrecioProducto2;
 			FinSi
 			
-			si ID == IDProducto3 & no Bandera Entonces
+			si no Bandera & ID == IDProducto3 Entonces
 				Bandera <- Verdadero;
-				Escribir "Se devolvió el producto: ", NombreProducto3;
+				Escribir "Se ha devuelto";
+				Escribir "Producto: ", NombreProducto3;
+				Escribir "Precio: ", PrecioProducto3;
 			FinSi
 			
 			si no Bandera Entonces
