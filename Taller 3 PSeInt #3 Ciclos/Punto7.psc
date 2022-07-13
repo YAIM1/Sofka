@@ -47,34 +47,11 @@ Proceso Punto7
 	Indice <- 0;
 	
 	Placa <- "";
-//	Marca <- "";
-//	Nombre <- "";
-//	Telefono <- "";	
-	
 	Placa1 <- "";
-//	Marca1 <- "";
-//	Nombre1 <- "";
-//	Telefono1 <- "";
-	
 	Placa2 <- "";
-//	Marca2 <- "";
-//	Nombre2 <- "";
-//	Telefono2 <- "";
-	
 	Placa3 <- "";
-//	Marca3 <- "";
-//	Nombre3 <- "";
-//	Telefono3 <- "";
-	
 	Placa4 <- "";
-//	Marca4 <- "";
-//	Nombre4 <- "";
-//	Telefono4 <- "";
-	
 	Placa5 <- "";
-//	Marca5 <- "";
-//	Nombre5 <- "";
-//	Telefono5 <- "";
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
 	Repetir
