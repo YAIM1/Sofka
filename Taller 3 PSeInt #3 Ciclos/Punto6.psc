@@ -11,10 +11,10 @@ Proceso Punto6
 	Definir Ignorar Como Cadena;
 	Definir Bandera Como Logico;
 	
+	Definir Indice Como Entero;
 	Definir Nombre Como Cadena;
 	Definir Telefono Como Cadena;
 	Definir Organizacion Como Cadena;
-	Definir Indice Como Entero;
 
 	Definir Nombre1 Como Cadena;
 	Definir Telefono1 Como Cadena;

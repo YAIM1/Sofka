@@ -12,11 +12,11 @@ Proceso Punto7
 	Definir Ignorar Como Cadena;
 	Definir Bandera Como Logico;
 	
+	Definir Indice Como Entero;
 	Definir Placa Como Caracter;
 	Definir Marca Como Caracter;
 	Definir Nombre Como Caracter;
 	Definir Telefono Como Caracter;
-	Definir Indice Como Entero;
 
 	Definir Placa1 Como Caracter;
 	Definir Marca1 Como Caracter;
@@ -47,34 +47,34 @@ Proceso Punto7
 	Indice <- 0;
 	
 	Placa <- "";
-	Marca <- "";
-	Nombre <- "";
-	Telefono <- "";	
+//	Marca <- "";
+//	Nombre <- "";
+//	Telefono <- "";	
 	
 	Placa1 <- "";
-	Marca1 <- "";
-	Nombre1 <- "";
-	Telefono1 <- "";
+//	Marca1 <- "";
+//	Nombre1 <- "";
+//	Telefono1 <- "";
 	
 	Placa2 <- "";
-	Marca2 <- "";
-	Nombre2 <- "";
-	Telefono2 <- "";
+//	Marca2 <- "";
+//	Nombre2 <- "";
+//	Telefono2 <- "";
 	
 	Placa3 <- "";
-	Marca3 <- "";
-	Nombre3 <- "";
-	Telefono3 <- "";
+//	Marca3 <- "";
+//	Nombre3 <- "";
+//	Telefono3 <- "";
 	
 	Placa4 <- "";
-	Marca4 <- "";
-	Nombre4 <- "";
-	Telefono4 <- "";
+//	Marca4 <- "";
+//	Nombre4 <- "";
+//	Telefono4 <- "";
 	
 	Placa5 <- "";
-	Marca5 <- "";
-	Nombre5 <- "";
-	Telefono5 <- "";
+//	Marca5 <- "";
+//	Nombre5 <- "";
+//	Telefono5 <- "";
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
 	Repetir
@@ -102,6 +102,12 @@ Proceso Punto7
 				FinSi
 				
 				
+				si Placa == "" Entonces
+					Bandera <- Verdadero;
+					Escribir "Debe escribir una placa";
+				FinSi				
+				
+				
 				Bandera <- Bandera | Placa == Placa1;
 				Bandera <- Bandera | Placa == Placa2;
 				Bandera <- Bandera | Placa == Placa3;
@@ -109,7 +115,7 @@ Proceso Punto7
 				Bandera <- Bandera | Placa == Placa5;
 				
 				
-				si Bandera & Indice < 5 Entonces
+				si Bandera & Indice < 5 & Placa <> "" Entonces
 					Escribir "Ese número ya está registrado";
 				FinSi
 				
@@ -178,7 +184,12 @@ Proceso Punto7
 				leer Placa;
 				
 				
-				Si Placa == Placa1 Entonces
+				si Placa == "" Entonces
+					Bandera <- Verdadero;
+				FinSi				
+				
+				
+				Si no Bandera & Placa == Placa1 Entonces
 					Bandera <- Verdadero;
 					Opcion <- 1;
 					
@@ -187,7 +198,7 @@ Proceso Punto7
 					Telefono <- Telefono1;
 				FinSi
 				
-				Si Placa == Placa2 Entonces
+				Si no Bandera & Placa == Placa2 Entonces
 					Bandera <- Verdadero;
 					Opcion <- 2;
 					
@@ -196,7 +207,7 @@ Proceso Punto7
 					Telefono <- Telefono2;
 				FinSi
 				
-				Si Placa == Placa3 Entonces
+				Si no Bandera & Placa == Placa3 Entonces
 					Bandera <- Verdadero;
 					Opcion <- 3;
 					
@@ -205,7 +216,7 @@ Proceso Punto7
 					Telefono <- Telefono3;
 				FinSi
 				
-				Si Placa == Placa4 Entonces
+				Si no Bandera & Placa == Placa4 Entonces
 					Bandera <- Verdadero;
 					Opcion <- 4;
 					
@@ -214,7 +225,7 @@ Proceso Punto7
 					Telefono <- Telefono4;
 				FinSi
 				
-				Si Placa == Placa5 Entonces
+				Si no Bandera & Placa == Placa5 Entonces
 					Bandera <- Verdadero;
 					Opcion <- 5;
 					
@@ -224,7 +235,7 @@ Proceso Punto7
 				FinSi
 				
 				
-				si Bandera Entonces
+				si Bandera & Placa <> "" Entonces
 					Escribir "Placa: ", Placa;
 					Escribir "Marca: ", Marca;
 					Escribir "Teléfono: ",Telefono;
@@ -236,7 +247,7 @@ Proceso Punto7
 				FinSi
 				
 				
-				si Bandera Entonces
+				si Bandera & Placa <> "" Entonces
 					Escribir "¿Desea eliminar este vehículo? [S/N]";
 					Repetir
 						Leer Ignorar;
@@ -291,51 +302,49 @@ Proceso Punto7
 						FinSi
 						
 						Escribir "Los datos han sido eliminado";
+						Escribir "Presione ENTER para continuar.";
+						leer Ignorar;
 					FinSi
 				FinSi
-				
-				Escribir "Presione ENTER para continuar.";
-				leer Ignorar;
 			3:
-				Escribir Placa1, " - ", Marca1, " - ", Nombre1, " - ", Telefono1;
-				Escribir Placa2, " - ", Marca2, " - ", Nombre2, " - ", Telefono2;
-				Escribir Placa3, " - ", Marca3, " - ", Nombre3, " - ", Telefono3;
-				Escribir Placa4, " - ", Marca4, " - ", Nombre4, " - ", Telefono4;
-				Escribir Placa5, " - ", Marca5, " - ", Nombre5, " - ", Telefono5;
-				
-				
 				Escribir "Por favor, ingrese la placa del vehículo";
 				leer Placa;
 				
-				Si Placa == Placa1 Entonces
+				
+				si Placa == "" Entonces
+					Bandera <- Verdadero;
+				FinSi				
+				
+				
+				Si no Bandera & Placa == Placa1 Entonces
 					Bandera <- Verdadero;
 					Telefono <- Telefono1;
 					Nombre <- Nombre1;
 					Marca <- Marca1;
 				FinSi
 				
-				Si Placa == Placa2 Entonces
+				Si no Bandera & Placa == Placa2 Entonces
 					Bandera <- Verdadero;
 					Telefono <- Telefono2;
 					Nombre <- Nombre2;
 					Marca <- Marca2;
 				FinSi
 				
-				Si Placa == Placa3 Entonces
+				Si no Bandera & Placa == Placa3 Entonces
 					Bandera <- Verdadero;
 					Telefono <- Telefono3;
 					Nombre <- Nombre3;
 					Marca <- Marca3;
 				FinSi
 				
-				Si Placa == Placa4 Entonces
+				Si no Bandera & Placa == Placa4 Entonces
 					Bandera <- Verdadero;
 					Telefono <- Telefono4;
 					Nombre <- Nombre4;
 					Marca <- Marca4;
 				FinSi
 				
-				Si Placa == Placa5 Entonces
+				Si no Bandera & Placa == Placa5 Entonces
 					Bandera <- Verdadero;
 					Telefono <- Telefono5;
 					Nombre <- Nombre5;
@@ -343,20 +352,22 @@ Proceso Punto7
 				FinSi
 				
 				
-				si Bandera Entonces
+				si Bandera & Placa <> "" Entonces
 					Escribir "Placa: ", Placa;
 					Escribir "Marca: ", Marca;
 					Escribir "Nombre: ", Nombre;
 					Escribir "Teléfono: ",Telefono;
 				FinSi
 				
-				si no Bandera Entonces
+				si no Bandera & Placa <> "" Entonces
 					Escribir "Esa placa no está registrada";
 				FinSi
 				
 				
-				Escribir "Presione ENTER para continuar.";
-				leer Ignorar;
+				si Placa <> "" Entonces
+					Escribir "Presione ENTER para continuar.";
+					leer Ignorar;
+				FinSi
 		FinSegun
 	Hasta Que Opcion == 4;
 	//---//---//---//---//---//---//---//---//---//---//
