@@ -19,9 +19,112 @@
 Proceso Punto5
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
+	Definir Fila Como Entero;
+	Definir Columna Como Entero;
+	
+	Definir Arreglo Como Entero;
+	Dimension Arreglo[ 10, 10 ];
+	
+	Definir Etiqueta Como Caracter;
+	Dimension Etiqueta[ 10 ];
+	
+	Definir Resultado Como Caracter;	
+	
+	Definir Opcion Como Entero;
+	Definir Ignorar Como Caracter;
+
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
+	Para Fila <- 0 Hasta 9 Con Paso 1 Hacer
+		Etiqueta[ Fila ] <- " ";
+		Para Columna <- 0 Hasta 9 Con Paso 1 Hacer
+			Arreglo[ Fila, Columna ] <- ( Fila + 1) * ( 1 + Columna );
+		FinPara
+	FinPara
+	
+	Etiqueta[ 3 ] <- "F";
+	Etiqueta[ 4 ] <- "I";
+	Etiqueta[ 5 ] <- "L";
+	Etiqueta[ 6 ] <- "A";
+	Etiqueta[ 7 ] <- "S";
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
+	Escribir  "                 C O L U M N A S";
+	Resultado <- "  ";
+	Para Fila <- 0 Hasta 9 Con Paso 1 Hacer
+		Resultado <- Concatenar( Resultado, "    " );
+		Resultado <- Concatenar( Resultado, ConvertirATexto( Fila ) );
+	FinPara
+	Escribir Resultado;
+	
+	Para Fila <- 0 Hasta 9 Con Paso 1 Hacer
+		Resultado <- "";
+		Resultado <- Concatenar( Resultado, Etiqueta[ Fila ] );
+		Resultado <- Concatenar( Resultado, " " );
+		Resultado <- Concatenar( Resultado, ConvertirATexto( Fila ) );
+		Resultado <- Concatenar( Resultado, " " );
+		si Fila < 9 Entonces
+			Resultado <- Concatenar( Resultado, " " );
+		FinSi
+		Para Columna <- 0 Hasta 9 Con Paso 1 Hacer
+			Resultado <- Concatenar( Resultado, ConvertirATexto( Fila + 1 ) );
+			Resultado <- Concatenar( Resultado, "x" );
+			Resultado <- Concatenar( Resultado, ConvertirATexto( Columna + 1 ) );
+			Resultado <- Concatenar( Resultado, " " );
+			si Fila < 9 Entonces
+				Resultado <- Concatenar( Resultado, " " );
+			FinSi
+		FinPara
+		Escribir Resultado;
+	FinPara
+	//---//---//---//---//---//---//---//---//---//---//
+	// Ingreso de datos
+	Repetir
+		Opcion <- 10;
+		Repetir
+			Escribir "Por favor, ingrese la fila";
+			Leer Ignorar;
+			
+			// Identificar el valor digitado
+			si Ignorar == "0" Entonces Opcion <- 0; FinSi
+			si Ignorar == "1" Entonces Opcion <- 1; FinSi
+			si Ignorar == "2" Entonces Opcion <- 2; FinSi
+			si Ignorar == "3" Entonces Opcion <- 3; FinSi
+			si Ignorar == "4" Entonces Opcion <- 4; FinSi
+			si Ignorar == "5" Entonces Opcion <- 5; FinSi
+			si Ignorar == "6" Entonces Opcion <- 6; FinSi
+			si Ignorar == "7" Entonces Opcion <- 7; FinSi
+			si Ignorar == "8" Entonces Opcion <- 8; FinSi
+			si Ignorar == "9" Entonces Opcion <- 9; FinSi
+		Hasta Que Opcion < 10;
+		Fila <- Opcion;
+		
+		Opcion <- 10;
+		Repetir
+			Escribir "Por favor, ingrese la columna";
+			Leer Ignorar;
+			
+			// Identificar el valor digitado
+			si Ignorar == "0" Entonces Opcion <- 0; FinSi
+			si Ignorar == "1" Entonces Opcion <- 1; FinSi
+			si Ignorar == "2" Entonces Opcion <- 2; FinSi
+			si Ignorar == "3" Entonces Opcion <- 3; FinSi
+			si Ignorar == "4" Entonces Opcion <- 4; FinSi
+			si Ignorar == "5" Entonces Opcion <- 5; FinSi
+			si Ignorar == "6" Entonces Opcion <- 6; FinSi
+			si Ignorar == "7" Entonces Opcion <- 7; FinSi
+			si Ignorar == "8" Entonces Opcion <- 8; FinSi
+			si Ignorar == "9" Entonces Opcion <- 9; FinSi
+		Hasta Que Opcion < 10;
+		Columna <- Opcion;
+		
+		// Salida de información
+		Escribir "[ ", Fila, ", ", Columna, " ] = ", Arreglo[ Fila, Columna ];
+		
+		Repetir
+			Escribir "¿Desea finalizar el programa?";
+			Leer Ignorar;
+		Hasta Que Ignorar == "S" | Ignorar == "s" |  Ignorar == "N" | Ignorar == "n";
+	Hasta Que Ignorar == "S" | Ignorar == "s";
 	//---//---//---//---//---//---//---//---//---//---//
 FinProceso
