@@ -225,8 +225,8 @@ Proceso Punto7
 				
 				
 				si Bandera & Placa <> "" Entonces
-					Escribir "¿Desea eliminar este vehículo? [S/N]";
 					Repetir
+						Escribir "¿Desea eliminar este vehículo? [S/N]";
 						Leer Ignorar;
 						
 						Bandera <- Falso;
