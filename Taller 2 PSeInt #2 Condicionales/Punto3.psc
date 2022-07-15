@@ -3,6 +3,16 @@
 // Si la persona es mayor o igual a 18 años, entonce se deberá imprimir en pantalla [Nombre completo] usted es mayor de edad, por lo tanto puede entrar a la fiesta.
 // Si la edad de la persona es menor que 18 años, entonces, deberá imprimirse el siguiente mensaje: [Nombre completo] usted es menor de edad, por lo tanto, no puede entrar a la fiesta, por favor devuélvase a su casa.
 //---//---//---//---//---//---//---//---//---//---//
+SubProceso ValidarEdad( Nombre, Apellidos, Edad )
+	si Edad > 17 Entonces
+		Escribir Nombre, " ", Apellidos, ", usted es mayor de edad, por lo tanto puede entrar a la fiesta.";
+	FinSi
+	
+	si Edad < 18 Entonces
+		Escribir Nombre, " ", Apellidos, ", usted es menor de edad, por lo tanto, no puede entrar a la fiesta, por favor devuélvase a su casa.";
+	FinSi
+FinSubProceso
+
 Proceso Punto3
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
@@ -21,12 +31,6 @@ Proceso Punto3
 	Leer Edad;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
-	si Edad > 17 Entonces
-		Escribir Nombre, " ", Apellidos, ", usted es mayor de edad, por lo tanto puede entrar a la fiesta.";
-	FinSi
-	
-	si Edad < 18 Entonces
-		Escribir Nombre, " ", Apellidos, ", usted es menor de edad, por lo tanto, no puede entrar a la fiesta, por favor devuélvase a su casa.";
-	FinSi
+	ValidarEdad( Nombre, Apellidos, Edad );
 	//---//---//---//---//---//---//---//---//---//---//
 FinProceso

@@ -2,15 +2,10 @@
 // Realizar un programa en el cual se solicite la edad de una persona.
 // Si la persona es mayor o igual a 18 años, deberá mostrar en pantalla: Usted es mayor de edad.
 //---//---//---//---//---//---//---//---//---//---//
-SubProceso EdadOut <- ValidarEdad( EdadIn )
-	//---//---//---//---//---//---//---//---//---//---//
-	// Definición de variables
-	Definir EdadOut Como Cadena;
-	//---//---//---//---//---//---//---//---//---//---//
-	si EdadIn > 17 Entonces
-		EdadOut <- "Usted es mayor de edad.";
+SubProceso ValidarEdad( Edad )
+	si Edad > 17 Entonces
+		Escribir "Usted es mayor de edad.";
 	FinSi
-	//---//---//---//---//---//---//---//---//---//---//
 FinSubProceso
 
 Proceso Punto1
@@ -23,6 +18,6 @@ Proceso Punto1
 	Leer Edad;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
-	Escribir ValidarEdad( Edad );
+	ValidarEdad( Edad );
 	//---//---//---//---//---//---//---//---//---//---//
 FinProceso
