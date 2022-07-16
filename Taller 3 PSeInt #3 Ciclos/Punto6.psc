@@ -4,46 +4,214 @@
 // Se requiere que la aplicación permita añadir 3 contactos verificando que el número no esté almacenado, buscar contactos almacenados y eliminar contactos si el usuario lo requiere.
 // Recuerde que el sistema debe terminar cuando el usuario así lo indique.
 //---//---//---//---//---//---//---//---//---//---//
+SubProceso Anadir( Nombres, Telefonos, Organizaciones )
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir Bandera Como Logico;
+	Definir Ignorar Como Caracter;
+	Definir Indice Como Entero;
+	Definir i Como Entero;
+	
+	Definir Telefono Como Caracter;
+	//---//---//---//---//---//---//---//---//---//---//
+	// Inicializar las variables
+	Indice <- 0;
+	Para i <- 0 Hasta 2 Con Paso 1 Hacer
+		si Telefonos[ i ] <> "" Entonces
+			Indice <- Indice + 1;
+		FinSi
+	FinPara
+	
+	Bandera <- Falso;
+	//---//---//---//---//---//---//---//---//---//---//
+	// Ingreso de datos
+	si Indice >= 3 Entonces
+		Escribir "No hay espacio para otro contacto";
+		Bandera <- Verdadero;
+	FinSi
+	
+	si Indice < 3 Entonces
+		Escribir "Por favor, ingrese el nuevo número de teléfono";
+		leer Telefono;
+	FinSi
+	
+	
+	si Telefono == "" Entonces
+		Escribir "Debe escribir un número";
+	FinSi
+
+	Para i <- 0 Hasta 2 Con Paso 1 Hacer
+		Bandera <- Bandera | Telefono == Telefonos[ i ];
+	FinPara
+	
+	si Bandera & Indice < 3 & Telefono <> "" Entonces
+		Escribir "Ese número ya está registrado";
+	FinSi
+	
+	Indice <- -1;
+	si Telefono <> "" Entonces
+		Para i <- 0 Hasta 2 Con Paso 1 Hacer
+			Si Indice < 0 & Telefonos[ i ] == "" Entonces
+				Indice <- i;
+			FinSi
+		FinPara
+	FinSi
+	
+	si Indice >= 0 Entonces
+		Telefonos[ Indice ] <- Telefono;
+		
+		Escribir "Por favor, ingrese el nombre completo";
+		leer Nombres[ Indice ];
+		
+		Escribir "Por favor, ingrese el nombre de la organización";
+		leer Organizaciones[ Indice ];
+		
+		Escribir "El contacto ha sido guardado";
+	FinSi
+	
+	
+	Escribir "Presione ENTER para continuar.";
+	leer Ignorar;
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+SubProceso Buscar( Nombres, Telefonos, Organizaciones )
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir Ignorar Como Caracter;
+	Definir Indice Como Entero;
+	Definir i Como Entero;
+	
+	Definir Telefono Como Caracter;
+	//---//---//---//---//---//---//---//---//---//---//
+	// Ingreso de datos
+	Escribir "Por favor, ingrese el número de teléfono a buscar";
+	leer Telefono;
+	
+	Indice <- -1;
+	si Telefono <> "" Entonces
+		Para i <- 0 Hasta 2 Con Paso 1 Hacer
+			Si Telefono == Telefonos[ i ] Entonces
+				Indice <- i;
+			FinSi
+		FinPara
+	FinSi
+	
+	si Indice >= 0 Entonces
+		Escribir "Nombre: ", Nombres[ Indice ];
+		Escribir "Teléfono: ",Telefonos[ Indice ];
+		Escribir "Organizacion: ", Organizaciones[ Indice ];
+	FinSi
+	
+	si Indice < 0 Entonces
+		Escribir "Ese número no está registrado";
+	FinSi
+	
+	
+	Escribir "Presione ENTER para continuar.";
+	leer Ignorar;
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+SubProceso Eliminar( Nombres, Telefonos, Organizaciones )
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir Bandera Como Logico;
+	Definir Ignorar Como Caracter;
+	Definir Indice Como Entero;
+	Definir i Como Entero;
+	
+	Definir Telefono Como Caracter;
+	//---//---//---//---//---//---//---//---//---//---//
+	// Inicializar las variables
+	Indice <- 0;
+	Para i <- 0 Hasta 2 Con Paso 1 Hacer
+		si Telefonos[ i ] <> "" Entonces
+			Indice <- Indice + 1;
+		FinSi
+	FinPara
+	
+	Bandera <- Falso;
+	//---//---//---//---//---//---//---//---//---//---//
+	// Ingreso de datos
+	Escribir "Por favor, ingrese el número de teléfono a eliminar";
+	leer Telefono;
+	
+	
+	Indice <- -1;
+	si Telefono <> "" Entonces
+		Para i <- 0 Hasta 2 Con Paso 1 Hacer
+			si Indice < 0 & Telefonos[ i ] == Telefono Entonces
+				Indice <- i;
+			FinSi
+		FinPara
+	FinSi
+	
+	
+	si Indice >= 0 Entonces
+		Escribir "Nombre: ", Nombres[ Indice ];
+		Escribir "Teléfono: ",Telefonos[ Indice ];
+		Escribir "Organizacion: ", Organizaciones[ Indice ];
+	FinSi
+	
+	si Indice < 0 Entonces
+		Escribir "Ese número no está registrado";
+	FinSi
+	
+	
+	si Indice >= 0 Entonces
+		Escribir "¿Desea eliminar este contacto? [S/N]";
+		Repetir
+			Leer Ignorar;
+			
+			Bandera <- Falso;
+			Bandera <- Bandera | Ignorar == "N";
+			Bandera <- Bandera | Ignorar == "n";
+			Bandera <- Bandera | Ignorar == "S";
+			Bandera <- Bandera | Ignorar == "s";
+		Hasta Que Bandera;
+		
+		Bandera <- Falso;
+		Bandera <- Bandera | Ignorar == "S";
+		Bandera <- Bandera | Ignorar == "s";
+		si Bandera Entonces
+			Nombres[ Indice ] <- "";
+			Telefonos[ Indice ] <- "";
+			Organizaciones[ Indice ] <- "";
+			
+			Escribir "El contacto ha sido eliminado";
+		FinSi
+	FinSi
+	
+	Escribir "Presione ENTER para continuar.";
+	leer Ignorar;	
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
 Proceso Punto6
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
 	Definir Opcion Como Entero;
 	Definir Ignorar Como Cadena;
-	Definir Bandera Como Logico;
 	
-	Definir Indice Como Entero;
-	Definir Nombre Como Cadena;
-	Definir Telefono Como Cadena;
-	Definir Organizacion Como Cadena;
-
-	Definir Nombre1 Como Cadena;
-	Definir Telefono1 Como Cadena;
-	Definir Organizacion1 Como Cadena;
+	Definir i Como Entero;
 	
-	Definir Nombre2 Como Cadena;
-	Definir Telefono2 Como Cadena;
-	Definir Organizacion2 Como Cadena;
+	Definir Nombres Como Cadena;
+	Definir Telefonos Como Cadena;
+	Definir Organizaciones Como Cadena;
 	
-	Definir Nombre3 Como Cadena;
-	Definir Telefono3 Como Cadena;
-	Definir Organizacion3 Como Cadena;
+	Dimension Nombres[ 3 ];
+	Dimension Telefonos[ 3 ];
+	Dimension Organizaciones[ 3 ];
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
-	Indice <- 0;
-	
-	Nombre1 <- "";
-	Telefono1 <- "";
-	Organizacion1 <- "";
-	
-	Nombre2 <- "";
-	Telefono2 <- "";
-	Organizacion2 <- "";
-	
-	Nombre3 <- "";
-	Telefono3 <- "";
-	Organizacion3 <- "";
+	Para i <- 0 Hasta 2 Con Paso 1 Hacer
+		Nombres[ i ] <- "";
+		Telefonos[ i ] <- "";
+		Organizaciones[ i ] <- "";
+	FinPara
 	//---//---//---//---//---//---//---//---//---//---//
-	// Salida de información
+	// Ingreso de datos
 	Repetir
 		Limpiar Pantalla;
 		
@@ -53,188 +221,20 @@ Proceso Punto6
 		Escribir "3. Eliminar";
 		Escribir "4. Salir";
 		Escribir "Por favor, seleccione la opción deseada";
-		Leer Opcion;
+		Leer Ignorar;
 		
-		Bandera <- Falso;
+		// Identificar la selección
+		Opcion <- 0;
+		si Ignorar == "1" Entonces Opcion <- 1; FinSi
+		si Ignorar == "2" Entonces Opcion <- 2; FinSi
+		si Ignorar == "3" Entonces Opcion <- 3; FinSi
+		si Ignorar == "4" Entonces Opcion <- 4; FinSi
+		
+		// Ejecutar la opción selecionada
 		Segun Opcion Hacer
-			1:
-				si Indice >= 3 Entonces
-					Escribir "No hay espacio para otro contacto";
-					Bandera <- Verdadero;
-				FinSi
-				
-				si Indice < 3 Entonces
-					Escribir "Por favor, ingrese el nuevo número de teléfono";
-					leer Telefono;
-				FinSi
-				
-				
-				Bandera <- Bandera | Telefono == Telefono1;
-				Bandera <- Bandera | Telefono == Telefono2;
-				Bandera <- Bandera | Telefono == Telefono3;
-				
-				
-				si Bandera & Indice < 3 Entonces
-					Escribir "Ese número ya está registrado";
-				FinSi
-				
-				
-				si no Bandera Entonces
-					Indice <- Indice + 1;
-					
-					Escribir "Por favor, ingrese el nombre completo";
-					leer Nombre;
-					
-					Escribir "Por favor, ingrese el nombre de la organización";
-					leer Organizacion;
-					
-					Escribir "El contacto ha sido guardado";
-				FinSi
-				
-				
-				si no Bandera & Nombre1 == "" Entonces
-					Bandera <- Verdadero;
-					Nombre1 <- Nombre;
-					Telefono1 <- Telefono;
-					Organizacion1 <- Organizacion;
-				FinSi
-				
-				si no Bandera & Nombre2 == "" Entonces
-					Bandera <- Verdadero;
-					Nombre2 <- Nombre;
-					Telefono2 <- Telefono;
-					Organizacion2 <- Organizacion;
-				FinSi
-				
-				si no Bandera & Nombre3 == "" Entonces
-					Bandera <- Verdadero;
-					Nombre3 <- Nombre;
-					Telefono3 <- Telefono;
-					Organizacion3 <- Organizacion;
-				FinSi
-				
-				Escribir "Presione ENTER para continuar.";
-				leer Ignorar;
-			2:
-				Escribir "Por favor, ingrese el número de teléfono a buscar";
-				leer Telefono;
-				
-				Si Telefono == Telefono1 Entonces
-					Bandera <- Verdadero;
-					Nombre <- Nombre1;
-					Organizacion <- Organizacion1;
-				FinSi
-				
-				Si Telefono == Telefono2 Entonces
-					Bandera <- Verdadero;
-					Nombre <- Nombre2;
-					Organizacion <- Organizacion2;
-				FinSi
-				
-				Si Telefono == Telefono3 Entonces
-					Bandera <- Verdadero;
-					Nombre <- Nombre3;
-					Organizacion <- Organizacion3;
-				FinSi
-				
-				
-				si Bandera Entonces
-					Escribir "Teléfono: ",Telefono;
-					Escribir "Nombre: ", Nombre;
-					Escribir "Organizacion: ", Organizacion;
-				FinSi
-				
-				si no Bandera Entonces
-					Escribir "Ese número no está registrado";
-				FinSi
-				
-				
-				Escribir "Presione ENTER para continuar.";
-				leer Ignorar;
-			3:
-				Escribir "Por favor, ingrese el número de teléfono a eliminar";
-				leer Telefono;
-				
-				
-				Si Telefono == Telefono1 Entonces
-					Bandera <- Verdadero;
-					Opcion <- 1;
-					
-					Nombre <- Nombre1;
-					Organizacion <- Organizacion1;
-				FinSi
-				
-				Si Telefono == Telefono2 Entonces
-					Bandera <- Verdadero;
-					Opcion <- 2;
-					
-					Nombre <- Nombre2;
-					Organizacion <- Organizacion2;
-				FinSi
-				
-				Si Telefono == Telefono3 Entonces
-					Bandera <- Verdadero;
-					Opcion <- 3;
-					
-					Nombre <- Nombre3;
-					Organizacion <- Organizacion3;
-				FinSi
-				
-				
-				si Bandera Entonces
-					Escribir "Teléfono: ",Telefono;
-					Escribir "Nombre: ", Nombre;
-					Escribir "Organizacion: ", Organizacion;
-				FinSi
-				
-				si no Bandera Entonces
-					Escribir "Ese número no está registrado";
-				FinSi
-				
-				
-				si Bandera Entonces
-					Escribir "¿Desea eliminar este contacto? [S/N]";
-					Repetir
-						Leer Ignorar;
-						
-						Bandera <- Falso;
-						Bandera <- Bandera | Ignorar == "N";
-						Bandera <- Bandera | Ignorar == "n";
-						Bandera <- Bandera | Ignorar == "S";
-						Bandera <- Bandera | Ignorar == "s";
-					Hasta Que Bandera;
-					
-					Bandera <- Falso;
-					Bandera <- Bandera | Ignorar == "S";
-					Bandera <- Bandera | Ignorar == "s";
-					si Bandera Entonces
-						
-						Indice <- Indice - 1;
-						
-						si Opcion == 1 Entonces
-							Nombre1 <- "";
-							Telefono1 <- "";
-							Organizacion1 <- "";
-						FinSi
-						
-						si Opcion == 2 Entonces
-							Nombre2 <- "";
-							Telefono2 <- "";
-							Organizacion2 <- "";
-						FinSi
-						
-						si Opcion == 3 Entonces
-							Nombre3 <- "";
-							Telefono3 <- "";
-							Organizacion3 <- "";
-						FinSi
-						
-						Escribir "El contacto ha sido eliminado";
-					FinSi
-				FinSi
-				
-				Escribir "Presione ENTER para continuar.";
-				leer Ignorar;
+			1: Anadir( Nombres, Telefonos, Organizaciones );
+			2: Buscar( Nombres, Telefonos, Organizaciones );
+			3: Eliminar( Nombres, Telefonos, Organizaciones );
 		FinSegun
 	Hasta Que Opcion == 4;
 	//---//---//---//---//---//---//---//---//---//---//
