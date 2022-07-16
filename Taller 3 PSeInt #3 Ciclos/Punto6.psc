@@ -30,6 +30,7 @@ SubProceso Anadir( Nombres, Telefonos, Organizaciones )
 		Bandera <- Verdadero;
 	FinSi
 	
+	Telefono <- "";
 	si Indice < 3 Entonces
 		Escribir "Por favor, ingrese el nuevo número de teléfono";
 		leer Telefono;
@@ -38,6 +39,7 @@ SubProceso Anadir( Nombres, Telefonos, Organizaciones )
 	
 	si Telefono == "" Entonces
 		Escribir "Debe escribir un número";
+		Bandera <- Verdadero;
 	FinSi
 
 	Para i <- 0 Hasta 2 Con Paso 1 Hacer
@@ -48,16 +50,14 @@ SubProceso Anadir( Nombres, Telefonos, Organizaciones )
 		Escribir "Ese número ya está registrado";
 	FinSi
 	
-	Indice <- -1;
-	si Telefono <> "" Entonces
+	si no Bandera Entonces
+		Indice <- -1;
 		Para i <- 0 Hasta 2 Con Paso 1 Hacer
 			Si Indice < 0 & Telefonos[ i ] == "" Entonces
 				Indice <- i;
 			FinSi
 		FinPara
-	FinSi
-	
-	si Indice >= 0 Entonces
+		
 		Telefonos[ Indice ] <- Telefono;
 		
 		Escribir "Por favor, ingrese el nombre completo";
@@ -206,9 +206,7 @@ Proceso Punto6
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
 	Para i <- 0 Hasta 2 Con Paso 1 Hacer
-		Nombres[ i ] <- "";
 		Telefonos[ i ] <- "";
-		Organizaciones[ i ] <- "";
 	FinPara
 	//---//---//---//---//---//---//---//---//---//---//
 	// Ingreso de datos
