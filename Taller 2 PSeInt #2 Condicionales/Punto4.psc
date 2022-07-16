@@ -10,7 +10,7 @@ SubProceso Alquilar( IDs, Peliculas )
 	
 	Definir i Como Entero;
 	//---//---//---//---//---//---//---//---//---//---//
-	// Mostrar las opciones disponibles
+	// Mostrar la información
 	Escribir "ID de la película a alquilar";
 	leer ID;
 	
@@ -33,7 +33,7 @@ SubProceso Disponibles( IDs, Peliculas )
 	// Definición de variables
 	Definir i Como Entero;
 	//---//---//---//---//---//---//---//---//---//---//
-	// Mostrar las opciones disponibles
+	// Mostrar la información
 	Escribir "Películas disponibles";
 	Para i <- 0 Hasta 9 Con Paso 1 Hacer
 		Escribir "ID: ", IDs[ i ],"    ", "Nombre de la película: ", Peliculas[ i ];
@@ -50,7 +50,7 @@ SubProceso Devolucion( IDs, Peliculas )
 	
 	Definir i Como Entero;
 	//---//---//---//---//---//---//---//---//---//---//
-	// Mostrar las opciones disponibles
+	// Mostrar la información
 	Escribir "ID de la película a devolver";
 	leer ID;
 	
@@ -88,8 +88,8 @@ Proceso Punto4
 	Para i <- 0 Hasta 9 Con Paso 1 Hacer
 		IDs[ i ] <- i;
 		Peliculas[ i ] <- ConvertirATexto( i );
-		Peliculas[ i ] <- Concatenar( ":: Película ", Peliculas[ i ] );
-		Peliculas[ i ] <- Concatenar( Peliculas[ i ], " ::" );
+		Peliculas[ i ] <- Concatenar( "< Película ", Peliculas[ i ] );
+		Peliculas[ i ] <- Concatenar( Peliculas[ i ], " >" );
 	FinPara
 	//---//---//---//---//---//---//---//---//---//---//
 	// Mostrar las opciones disponibles
@@ -100,13 +100,13 @@ Proceso Punto4
 	Escribir "Por favor, seleccione la opción deseada";
 	Leer Ignorar;
 	
-	// Identificarl al selección
+	// Identificar la selección
 	Opcion <- 0;
 	si Ignorar == "1" Entonces Opcion <- 1; FinSi
 	si Ignorar == "2" Entonces Opcion <- 2; FinSi
 	si Ignorar == "3" Entonces Opcion <- 3; FinSi
 	
-	// Identificar la opción selecionada
+	// Ejecutar la opción selecionada
 	Segun Opcion Hacer
 		1: Alquilar( IDs, Peliculas );
 		2: Disponibles( IDs, Peliculas );
