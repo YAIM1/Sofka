@@ -38,16 +38,6 @@ SubProceso NuevoEstado( Indice, Estados, Estado )
 	FinSi
 	//---//---//---//---//---//---//---//---//---//---//
 FinSubProceso
-
-//SubProceso variable_de_retorno <- Nombre ( Argumentos )
-//	//---//---//---//---//---//---//---//---//---//---//
-//	// Definición de variables
-//	//---//---//---//---//---//---//---//---//---//---//
-//	// Inicializar las variables
-//	//---//---//---//---//---//---//---//---//---//---//
-//	// Ingreso de datos
-//	//---//---//---//---//---//---//---//---//---//---//
-//FinSubProceso
 	
 SubProceso RegistarTorta( IDs, Sabores, Porciones, Decoraciones, Estados, Estado )
 	//---//---//---//---//---//---//---//---//---//---//
