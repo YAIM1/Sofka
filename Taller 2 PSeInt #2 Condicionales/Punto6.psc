@@ -23,7 +23,7 @@ SubProceso Ingreso( Placas, IngresoRegistros, IngresoObservaciones )
 	
 	Bandera <- Falso;
 	//---//---//---//---//---//---//---//---//---//---//
-	// Mostrar la información
+	// Ingreso de datos
 	si Indice > 9 Entonces
 		Escribir "No hay espacio para otro vehículo";
 		Bandera <- Verdadero;
@@ -48,7 +48,7 @@ SubProceso Ingreso( Placas, IngresoRegistros, IngresoObservaciones )
 	
 	
 	si Bandera & Indice <= 9 & Placa <> "" Entonces
-		Escribir "Ese número ya está registrado";
+		Escribir "Esa placa ya está registrada";
 	FinSi
 	
 	
@@ -80,10 +80,94 @@ FinSubProceso
 SubProceso Salida( Placas, SalidaRegistros, SalidaObservaciones, Inventario )
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
+	Definir Bandera Como Logico;
+	Definir Indice Como Entero;
+	Definir i Como Entero;
+	
+	Definir Placa Como Caracter;
+	Definir Ignorar Como Caracter;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
+	Indice <- -1;
+	Para i <- 0 Hasta 9 Con Paso 1 Hacer
+		si Placas[ i ] <> "" Entonces
+			Indice <- Indice + 1;
+		FinSi
+	FinPara
+	
+	Bandera <- Falso;
 	//---//---//---//---//---//---//---//---//---//---//
-	// Mostrar la información
+	// Ingreso de datos
+	si Indice <= 0 | Indice > 9 Entonces
+		Escribir "No hay ningun vehiculo registrado.";
+		Bandera <- Verdadero;
+	FinSi
+	
+	
+	si Indice >= 0 Entonces
+		Escribir "Por favor, ingrese la placa del vehículo";
+		leer Placa;
+	FinSi
+	
+	
+	si Placa == "" Entonces
+		Bandera <- Verdadero;
+		Escribir "Debe escribir una placa";
+	FinSi				
+	
+	si no Bandera Entonces
+		Bandera <- Verdadero;
+		Para i <- 0 Hasta 9 Con Paso 1 Hacer
+			si Placa == Placas[ i ] Entonces
+				Bandera <- Falso;
+			FinSi
+		FinPara
+	FinSi
+	
+	
+	si Bandera & Indice <= 9 & Placa <> "" Entonces
+		Escribir "Esa placa no está registrado";
+	FinSi
+	
+	
+	si no Bandera Entonces	
+		Para i <- 0 Hasta 9 Con Paso 1 Hacer
+			si no Bandera & Placa == Placas[ i ] Entonces
+				Bandera <- Verdadero;
+				Indice <- i;
+			FinSi
+		FinPara
+		
+		Placas[ Indice ] <- Placa;
+		
+		Escribir "Por favor, ingrese el registro de salida";
+		leer Ignorar;   SalidaRegistros[ Indice ] <- ConvertirANumero( Ignorar );
+		
+		Escribir "Por favor, las observaciones del vehículo";
+		leer Ignorar;   SalidaObservaciones[ Indice ] <- Ignorar;
+		
+		Repetir
+			Escribir "¿Se usó algó del inventario? [ S/N ]";
+			Leer Ignorar;
+			
+			Bandera <- Falso;
+			Bandera <- Bandera | Ignorar == "S";
+			Bandera <- Bandera | Ignorar == "s";
+			Bandera <- Bandera | Ignorar == "N";
+			Bandera <- Bandera | Ignorar == "n";
+		Hasta Que Bandera;
+		
+		si Ignorar == "S" o Ignorar == "s" Entonces
+			Escribir "Ingrese lo usado del inventario";
+			Leer Ignorar;   Inventario[ Indice ] <- Ignorar;
+		FinSi
+		
+		Escribir "Los datos han sido guardados";
+	FinSi
+	
+	
+	Escribir "Presione ENTER para continuar.";
+	leer Ignorar;
 	//---//---//---//---//---//---//---//---//---//---//
 FinSubProceso
 
@@ -117,15 +201,17 @@ SubProceso Consultar( Placas, IngresoRegistros, IngresoObservaciones, SalidaRegi
 			FinSi
 		FinPara
 	FinSi
-
+	
 	
 	si Bandera & Placa <> "" Entonces
 		Escribir "Placa: ", Placas[ Indice ];
 		Escribir "Registros de ingreso: ", IngresoRegistros[ Indice ];
 		Escribir "Observaciones de ingreso: ", IngresoObservaciones[ Indice ];
-		Escribir "Registros de salida: ",SalidaRegistros[ Indice ];
-		Escribir "Observaciones de salida: ",SalidaObservaciones[ Indice ];
-		Escribir "Inventario: ", Inventario[ Indice ];
+		si SalidaRegistros[ Indice ] > 0 Entonces
+			Escribir "Registros de salida: ",SalidaRegistros[ Indice ];
+			Escribir "Observaciones de salida: ",SalidaObservaciones[ Indice ];
+			Escribir "Inventario: ", Inventario[ Indice ];
+		FinSi
 	FinSi
 	
 	si no Bandera & Placa <> "" Entonces
@@ -203,23 +289,5 @@ Proceso Punto6
 			3: Consultar( Placas, IngresoRegistros, IngresoObservaciones, SalidaRegistros, SalidaObservaciones, Inventario );
 		FinSegun
 	Hasta Que Opcion == 4;
-
-	
-	
-	
-	
-//	Escribir "Ingrese el registro de salida";
-//	Leer SalidaRegistro;
-//	
-//	Escribir "Ingrese las observaciones de salida";
-//	Leer SalidaObservaciones;
-//	
-//	Escribir "Se usó algó del inventario [ S/N ]";
-//	Leer Opcion;
-//
-//	si Opcion == "S" o Opcion == "s" Entonces
-//		Escribir "Ingrese lo usado del inventario";
-//		Leer Inventario;
-//	FinSi
 	//---//---//---//---//---//---//---//---//---//---//
 FinProceso
