@@ -88,7 +88,7 @@ SubProceso Salida( Placas, SalidaRegistros, SalidaObservaciones, Inventario )
 	Definir Ignorar Como Caracter;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
-	Indice <- -1;
+	Indice <- 0;
 	Para i <- 0 Hasta 9 Con Paso 1 Hacer
 		si Placas[ i ] <> "" Entonces
 			Indice <- Indice + 1;
@@ -98,13 +98,13 @@ SubProceso Salida( Placas, SalidaRegistros, SalidaObservaciones, Inventario )
 	Bandera <- Falso;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Ingreso de datos
-	si Indice <= 0 | Indice > 9 Entonces
+	si Indice < 1 Entonces
 		Escribir "No hay ningun vehiculo registrado.";
 		Bandera <- Verdadero;
 	FinSi
 	
 	
-	si Indice >= 0 Entonces
+	si Indice > 0 Entonces
 		Escribir "Por favor, ingrese la placa del vehículo";
 		leer Placa;
 	FinSi
