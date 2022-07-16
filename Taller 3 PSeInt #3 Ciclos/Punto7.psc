@@ -38,7 +38,7 @@ SubProceso Ingresar( Placas, Marcas, Nombres, Telefonos )
 	FinSi
 	
 	
-	si no bandera & Placa == "" Entonces
+	si no Bandera & Placa == "" Entonces
 		Bandera <- Verdadero;
 		Escribir "Debe escribir una placa";
 	FinSi				
@@ -158,7 +158,6 @@ FinSubProceso
 SubProceso Consultar( Placas, Marcas, Nombres, Telefonos )
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
-	Definir Bandera Como Logico;
 	Definir Ignorar Como Caracter;
 	Definir Indice Como Entero;
 	Definir i Como Entero;
@@ -172,8 +171,6 @@ SubProceso Consultar( Placas, Marcas, Nombres, Telefonos )
 			Indice <- Indice + 1;
 		FinSi
 	FinPara
-	
-	Bandera <- Falso;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Ingreso de datos
 	Escribir "Por favor, ingrese la placa del vehículo";
