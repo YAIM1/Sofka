@@ -4,22 +4,44 @@
 // Números pares: 2, 4, 6, 8, 10
 // Números impares: 1, 3, 5, 7, 9
 //---//---//---//---//---//---//---//---//---//---//
-Proceso Punto2
+SubProceso Registrar( Arreglo )
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
-	Definir Arreglo Como Entero;
-	Dimension Arreglo[ 20 ];
-	
 	Definir i Como Entero;
-	Definir Contador Como Entero;
-	Definir Resultado Como Caracter;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
 	Para i <- 0 Hasta 19 Con Paso 1 Hacer
 		Arreglo[ i ] <- Aleatorio( 1, 100 );
 	FinPara
-	
-	Resultado <- "";
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+SubProceso Ordenar( Arreglo )
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir i Como Entero;
+	Definir j Como Entero;
+	Definir Auxiliar Como Entero;
+	//---//---//---//---//---//---//---//---//---//---//
+	// Ordenar de menor a moyor
+	Para i <- 0 Hasta 18 Con Paso 1 Hacer
+		Para j <- i + 1 Hasta 19 Con Paso 1 Hacer
+			si Arreglo[ i ] > Arreglo[ j ] Entonces
+				Auxiliar <- Arreglo[ i ];
+				Arreglo[ i ] <- Arreglo[ j ];
+				Arreglo[ j ] <- Auxiliar;
+			FinSi
+		FinPara
+	FinPara
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+SubProceso Mostrar( Arreglo )
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir i Como Entero;
+	Definir Contador Como Entero;
+	Definir Resultado Como Caracter;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
 	i <- 0;
@@ -53,5 +75,17 @@ Proceso Punto2
 		i <- i + 1;
 	Hasta Que i >= 20;
 	Escribir Resultado;
-//---//---//---//---//---//---//---//---//---//---//
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+Proceso Punto2
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir Arreglo Como Entero;
+	Dimension Arreglo[ 20 ];
+	//---//---//---//---//---//---//---//---//---//---//
+	Registrar( Arreglo );
+	Ordenar( Arreglo );
+	Mostrar( Arreglo );
+	//---//---//---//---//---//---//---//---//---//---//
 FinProceso

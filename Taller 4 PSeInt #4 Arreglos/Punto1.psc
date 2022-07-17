@@ -7,21 +7,23 @@
 // [3] = 56
 // [4] = 69
 //---//---//---//---//---//---//---//---//---//---//
-Proceso Punto1
+SubProceso Registrar( Arreglo )
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
-	Definir Arreglo Como Entero;
-	Dimension Arreglo[ 5 ];
-	
 	Definir i Como Entero;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
-	//---//---//---//---//---//---//---//---//---//---//
-	// Ingreso de datos
 	Para i <- 0 Hasta 4 Con Paso 1 Hacer
 		Escribir "Por favor, ingrese el ", i, " valor";
 		Leer Arreglo[ i ];
 	FinPara
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+SubProceso Mostrar( Arreglo )
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir i Como Entero;
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
 	Escribir "";
@@ -29,5 +31,16 @@ Proceso Punto1
 	Para i <- 0 Hasta 4 Con Paso 1 Hacer
 		Escribir "[ ", i, " ] = ", Arreglo[ i ];
 	FinPara
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+Proceso Punto1
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir Arreglo Como Entero;
+	Dimension Arreglo[ 5 ];
+	//---//---//---//---//---//---//---//---//---//---//
+	Registrar( Arreglo );
+	Mostrar( Arreglo );
 	//---//---//---//---//---//---//---//---//---//---//
 FinProceso

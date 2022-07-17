@@ -10,16 +10,11 @@
 // 11 12 13 14 15
 // 20 19 18 17 16
 //---//---//---//---//---//---//---//---//---//---//
-Proceso Punto4
+SubProceso Registrar( Arreglo )
 	//---//---//---//---//---//---//---//---//---//---//
 	// Definición de variables
 	Definir Fila Como Entero;
 	Definir Columna Como Entero;
-	
-	Definir Arreglo Como Entero;
-	Dimension Arreglo[ 4, 5 ];
-	
-	Definir Resultado Como Caracter;	
 	//---//---//---//---//---//---//---//---//---//---//
 	// Inicializar las variables
 	Para Fila <- 0 Hasta 3 Con Paso 1 Hacer
@@ -27,6 +22,15 @@ Proceso Punto4
 			Arreglo[ Fila, Columna ] <- 5 * Fila + Columna + 1;
 		FinPara
 	FinPara
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+SubProceso Mostrar( Arreglo )
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir Fila Como Entero;
+	Definir Columna Como Entero;	
+	Definir Resultado Como Caracter;	
 	//---//---//---//---//---//---//---//---//---//---//
 	// Salida de información
 	Para Fila <- 0 Hasta 3 Con Paso 1 Hacer
@@ -51,5 +55,16 @@ Proceso Punto4
 		FinSi
 		Escribir Resultado;
 	FinPara
+	//---//---//---//---//---//---//---//---//---//---//
+FinSubProceso
+
+Proceso Punto4
+	//---//---//---//---//---//---//---//---//---//---//
+	// Definición de variables
+	Definir Arreglo Como Entero;
+	Dimension Arreglo[ 4, 5 ];
+	//---//---//---//---//---//---//---//---//---//---//
+	Registrar( Arreglo );
+	Mostrar( Arreglo );
 	//---//---//---//---//---//---//---//---//---//---//
 FinProceso
