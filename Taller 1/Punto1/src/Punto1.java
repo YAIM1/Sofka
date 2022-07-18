@@ -2,6 +2,7 @@
 //---//---//---//---//---//---//---//---//---//---//
 // Realizar un programa el cual solicite su nombre y apellidos.
 //---//---//---//---//---//---//---//---//---//---//
+
 import java.util.Scanner;
 
 public class Punto1 {

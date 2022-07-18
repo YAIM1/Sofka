@@ -2,12 +2,13 @@
 //---//---//---//---//---//---//---//---//---//---//
 // Realizar un programa el cual solicite su nombre, apellidos, edad y estatura.
 //---//---//---//---//---//---//---//---//---//---//
+
 import java.util.Scanner;
 
 public class Punto2 {
     private String Name;
     private String LastName;
-    private short Age;
+    private int Age;
     private float Heigth;
 
     public Punto2() {
@@ -19,26 +20,8 @@ public class Punto2 {
         System.out.print("Por favor, Ingrese sus apellidos: ");
         this.LastName = Input.nextLine();
 
-        do {
-            try {
-                System.out.print("Por favor, Ingrese su edad: ");
-                this.Age = Input.nextShort();
-            } catch (Exception e) {
-                this.Age = 0;
-                Input.nextLine();
-                System.out.println("Por favor, ingrese un número mayor a cero");
-            }
-        } while (this.Age < 1);
+        this.Age = lib.getInt("Por favor, Ingrese su edad", 0, Integer.MAX_VALUE);
 
-        do {
-            try {
-                System.out.print("Por favor, Ingrese su altura: ");
-                this.Heigth = Input.nextFloat();
-            } catch (Exception e) {
-                System.out.println("Por favor, ingrese un número mayor a cero");
-                this.Heigth = 0;
-                Input.nextLine();
-            }
-        } while (this.Heigth < 1);
+        this.Heigth = lib.getFloat("Por favor, Ingrese su altura (metros)", (float) 0, Float.MAX_VALUE);
     }
 }
